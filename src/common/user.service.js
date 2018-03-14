@@ -28,7 +28,12 @@ function UserService() {
   };
 
   service.retrieveUserInfo = function(){
-    return service.user;
+    if (service.user.firstname == undefined){
+      return null;
+    }
+    else {
+      return service.user;
+    }
   }
 
 }

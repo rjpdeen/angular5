@@ -12,8 +12,8 @@ function InfoController(UserService, MenuService, ApiPath) {
 	$ctrl.signedup = undefined;
 
 	$ctrl.user = UserService.retrieveUserInfo();
- 	
- 	var promise = MenuService.getMenuItem($ctrl.user.menunumber);
+ 	if ($ctrl.user != null) {
+ 		var promise = MenuService.getMenuItem($ctrl.user.menunumber);
 
  		if (promise != null){
 	 		promise.then( function success (response) {
@@ -30,8 +30,11 @@ function InfoController(UserService, MenuService, ApiPath) {
  		else {
  			$ctrl.signedup = false;
  		}
-	  	
 	}
-
+	else {
+		$ctrl.signedup = false;
+	}
+ }
+ 
 
 } )();
